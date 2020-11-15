@@ -46,7 +46,6 @@ const ArtistType = new GraphQLObjectType({
           strAlbumThumb: disc.strAlbumThumb,
           idAlbum: disc.idAlbum,
           albumDetails: async () => {
-            console.log("id", disc.idAlbum);
             const res = await axios.get(
               `https://theaudiodb.com/api/v1/json/1/track.php?m=${disc.idAlbum}`
             );
@@ -57,7 +56,8 @@ const ArtistType = new GraphQLObjectType({
           }
         }));
       }
-    }
+    },
+    
   })
 });
 
@@ -73,6 +73,22 @@ const DiscographyType = new GraphQLObjectType({
     albumDetails: { type: new GraphQLList(AlbumDetailsType) }
   })
 });
+
+// const track TYPE 
+const TrackType = new GraphQLObjectType({
+  name:"Track",
+  fields: () => ({
+    strGenre: {type: GraphQLString},
+    strMood : { type : GraphQLString},
+    strStyle : { type: GraphQLString},
+    strDescriptionEN : { type : GraphQLString},
+    strTrackThumb : { type: GraphQLString},
+    strMusicVid : { type : GraphQLString},
+    intScore : { type: GraphQLString},
+    intScoreVotes : { type: GraphQLString}
+
+  })
+})
 
 // album details
 const AlbumDetailsType = new GraphQLObjectType({
@@ -92,7 +108,6 @@ const RootQuery = new GraphQLObjectType({
         const res = await axios.get(
           `https://www.theaudiodb.com/api/v1/json/1/search.php?s=${args.strArtist}`
         );
-        console.log("tracks", res.data);
         const data = await res.data;
         return {
           ...data.artists[0]
@@ -117,7 +132,18 @@ const RootQuery = new GraphQLObjectType({
           throw e;
         }
 
-        // console.log(Object.values(discs.album));
+      }
+    },
+    track : {
+      type : TrackType,
+      args: { strArtist: { type : GraphQLString}, strTrack :{ type: GraphQLString}},
+      async resolve(parent,args) {
+        const res = await axios.get(`https://theaudiodb.com/api/v1/json/1/searchtrack.php?s=${args.strArtist}&t=${args.strTrack}`)
+        const data = await res.data.track[0]
+        return {
+          ...data 
+        }
+
       }
     }
   })

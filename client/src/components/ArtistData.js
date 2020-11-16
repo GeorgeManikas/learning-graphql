@@ -49,8 +49,8 @@ const ArtistData = ({ artist }) => {
           strArtistFanart3={data.artist.strArtistFanart3}
         />
       </div>
-      <div> <Social artist={data.artist}/> </div>
-      <div>
+      <div className="w-full"> <Social artist={data.artist}/> </div>
+      <div className="w-full mx-auto">
         <TimeLine
           discography={data.artist.discography}
           artist={data.artist.strArtist}

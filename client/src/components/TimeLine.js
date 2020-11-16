@@ -30,11 +30,11 @@ const TimeLine = ({ discography, artist }) => {
   };
   return (
     <>
-      <div className="p-3">
-        <div className="grid grid-cols-4 w-5/6 mx-auto">
-        <div className="col-span-1 h-20 mt-6 ">
-            <select className="w-5/6 text-center font-semibold   text-md text-gray-200 mx-auto p-8 bg-gray-700 rounded-xl appearance-none">
-              <option   selected disabled> Year Released </option>
+      <div className="p-2 ">
+        <div className="grid md:grid-cols-4 justify-center items-center">
+        <div className="col-span-4 md:col-span-2     ">
+            <select className="w-full text-center font-semibold   text-md text-gray-200 mx-auto p-8 bg-gray-700 rounded-xl appearance-none cursor-pointer hover:bg-gray-800">
+              <option   selected disabled> Album Name- Year Released  </option>
               {sorted.map((disc) => (
                 <option
                   key={disc.strAlbumThumb}
@@ -48,41 +48,42 @@ const TimeLine = ({ discography, artist }) => {
             </select>
           </div>
 
-          <div className="col-span-3 mt-6 ">
-            <div className="grid grid-cols-3 w-5/6 bg-gray-200 justify-center items-start rounded-xl shadow-md overflow-hidden ">
-                <img src={currentAlbum.strAlbumThumb} alt={currentAlbum.strAlbum} className="col-span-1  row-span-2"/>
-                <div className="text-3xl ml-4 text-gray-800 col-span-2 p-2"> {currentAlbum.strAlbum} </div>
-                <div className="ml-4 col-span-2 p-2 "> {currentAlbum.strDescriptionEN} </div>
-                <h3 className="text-2xl  ml-4 font-semibold mt-2 col-span-1 "> Track List</h3>
+          <div className="w-full md:w-5/6 col-span-4 md:col-span-4 mx-auto  mt-6  ">
+            <div className="grid grid-cols-4 w-full bg-gray-200 mx-auto justify-center items-start rounded-xl shadow-md overflow-hidden  ">
+                <img src={currentAlbum.strAlbumThumb} alt={currentAlbum.strAlbum} className="col-span-4 md:col-span-4   "/>
+                <div className="text-2xl p-2  m-px text-center text-gray-200 col-span-4 md:col-span-1  font-semibold bg-gray-800 "> {currentAlbum.strAlbum} </div>
+                <div className="ml-4 col-span-4 md:col-span-3 p-2 md:mt-2"> {currentAlbum.strDescriptionEN} </div>
+                <h3 className="text-2xl  md:col-span-1 text-gray-200 bg-gray-800 m-px  p-2  font-semibold mt-2 col-span-4 text-center md:col-span-1 "> Track List</h3>
                 
-                <div className="col-span-3">
-                  <div className="grid grid-cols-3  flex-wrap gap-1 ">
+                <div className="col-span-4 md:col-span-3">
+                  <div className="grid grid-cols-3  justify-center   gap-1 ">
                   { currentAlbum.albumDetails && 
                   <>
-                  <a href="#lyrics">
-                    <div className="col-span-1 ml-4 p-3">
+                  <a href="#lyrics" className="col-span-3">
+                    <div className="   p-2">
                     
                       {currentAlbum.albumDetails.map( track => (
-                        <div className="text-lg text-gray-800 cursor-pointer hover:bg-gray-800 hover:text-gray-200"
+                        <div className="text-xl w-full  md:text-lg text-gray-800 cursor-pointer hover:bg-gray-800 hover:text-gray-200"
                         onClick={() => handleTrackSelect(track.strTrack)}> {track.strTrack} </div>
                       ))}
                       </div>
                       </a>
-                      {/* <div className="col-span-2 p-4  w-full h-full"> 
-                        <div className="text-3xl font-semibold text-center"> {artist} - { currentSong } </div>
-                        <textarea className=" bg-transparent text-2xl text-center p-2 " value={lyr} cols="50" rows="30"/> 
-                      </div> */}
+                     
                   </>
                   
                   }
                   </div>
-                  <div id="lyrics" className="col-span-2 p-4  w-full h-full"> 
-                        <div className="text-3xl font-semibold text-center"> {artist} - { currentSong } </div>
-                        <p className=" bg-transparent text-2xl text-center p-2 " value={lyr} cols="50" rows="30"><pre>{lyr}</pre> </p> 
+                  <div className="md:col-span-1">
+                  <h3 className="text-2xl  text-gray-200 bg-gray-800 m-px   font-semibold mt-2  text-center  "> Lyrics </h3>
+                        <div className="col-span-4 text-2xl font-semibold text-center"> {artist} - { currentSong } </div>
+                        <div className="col-span-4  m-2 text-center">
+                        <Lyrics lyrics={lyr} />  
+
+                        </div>
                         <div> <TrackDetails artist={artist} title={currentSong} /> </div>
-                      </div>
-                </div>
+                        </div>
                 
+                </div>
             </div>
             </div>
           </div>

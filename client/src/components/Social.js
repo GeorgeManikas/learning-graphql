@@ -4,13 +4,13 @@ const Social = ({ artist }) => {
   return (
     <div>
       {/* <pre> {JSON.stringify(artist,null,4)}</pre> */}
-      <div className="flex flex-row p-4  ">
+      <div className="inline-flex justify-center p-4 justify-center items-between  ">
         <a
           href={`http://${artist.strWebsite}`}
           target="_blank"
           rel="noreferrer"
         >
-          <div className="flex flex-row items-center px-5 text-green-500 p-2 border border-green-500 bg-transparent rounded-xl hover:bg-green-500 hover:text-gray-200 cursor-pointer mr-2 ">
+          <div className="inline-flex items-center px-5 text-green-500 p-2 border border-green-500 bg-transparent rounded-xl hover:bg-green-500 hover:text-gray-200 cursor-pointer mr-2 ">
             <svg
               className="w-8 h-8 "
               fill="currentColor"
@@ -32,7 +32,7 @@ const Social = ({ artist }) => {
           target="_blank"
           rel="noreferrer"
         >
-          <div className="flex flex-row items-center px-5 text-blue-700 p-2 border border-blue-700 bg-transparent rounded-xl hover:bg-blue-700 hover:text-gray-200 cursor-pointer mr-2">
+          <div className="inline-flex items-center px-5 text-blue-700 p-2 border border-blue-700 bg-transparent rounded-xl hover:bg-blue-700 hover:text-gray-200 cursor-pointer mr-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"

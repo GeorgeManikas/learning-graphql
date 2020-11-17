@@ -37,14 +37,12 @@ const TrackDetails = ({ artist, title }) => {
     
     { data.track.strMusicVid ? 
       <div className="p-3 w-full ">
-      <ReactPlayer width="80vw" url={data.track.strMusicVid}  /> 
+      <ReactPlayer style={{ margin: "auto"}} width="80%" controls="true" config="true" url={data.track.strMusicVid}  /> 
     </div>    
     :
       <div> No music video found for this song ... </div>
     }
-    <div className="w-full md:w-1/2 mx-auto p-4 my-6 bg-gray-800 text-center text-gray-200 rounded-full hover:bg-gray-900 cursor-pointer">
-    <a  href="#banner"> top of page...</a>
-    </div>
+    
     </>
   );
 };

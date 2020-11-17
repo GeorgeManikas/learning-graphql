@@ -8,7 +8,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 const cache = new InMemoryCache()
 
 const client  = new ApolloClient({
-  uri:"https://music-o-pedia.herokuapp.com/graphql",
+  uri:"https://music-o-pedia.herokuapp.com",
   cache
 })
 

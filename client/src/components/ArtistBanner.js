@@ -7,11 +7,11 @@ const ArtistBanner = ({
 
     
     return (
-        <div className="grid md:grid-cols-3 justify-center w-full mx-auto rounded-lg shadow-lg p-4 overflow-hidden ">
+        <div className=" grid md:grid-cols-3 justify-center w-full gap-2 md:w-5/6 mx-auto rounded-lg shadow-lg p-4 overflow-hidden ">
 
-            <img src={strArtistFanart} alt="" className="" />
-            <img src={strArtistFanart2} alt="" />
-            <img src={strArtistFanart3} alt="" />
+            <div> <img src={strArtistFanart} alt="" className="block" /></div>
+            <div className="hidden md:block "> <img src={strArtistFanart2} alt="not found" /> </div>
+            <div className="hidden md:block "><img src={strArtistFanart3} alt="not found" /> </div>
         </div>
     )
 }
